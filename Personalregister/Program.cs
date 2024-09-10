@@ -1,4 +1,5 @@
 ﻿using System;
+using Personalregister;
 
 class Program
 {
@@ -13,6 +14,7 @@ class Program
     static void ShowMenu()
     {
         bool isOpen = true;
+        Utilities utilities = new Utilities();
 
         while (isOpen)
         {
@@ -26,10 +28,10 @@ class Program
             switch (option)
             {
                 case "1":
-                    AddWorker();
+                    utilities.AddWorker(ref workerCount, workers);
                     break;
                 case "2":
-                    DisplayWorkers();
+                    utilities.DisplayWorkers(ref workerCount, workers);
                     break;
                 case "3":
                     isOpen = false;
@@ -43,43 +45,4 @@ class Program
         }
     }
 
-    static void AddWorker()
-    {
-        if (workerCount >= workers.Length)
-        {
-            Console.WriteLine("Maximum number of workers reached.");
-            return;
-        }
-
-        Console.Write("Enter worker's name: ");
-        string name = Console.ReadLine();
-
-        Console.Write("Enter worker's salary: ");
-        if (decimal.TryParse(Console.ReadLine(), out decimal salary))
-        {
-            workers[workerCount] = (name, salary);
-            workerCount++;
-            Console.WriteLine("Worker added successfully!");
-        }
-        else
-        {
-            Console.WriteLine("Invalid salary input, please try again.");
-        }
-    }
-
-
-    static void DisplayWorkers()
-    {
-        if (workerCount == 0)
-        {
-            Console.WriteLine("No workers to display.");
-            return;
-        }
-
-        Console.WriteLine("List of workers:");
-        for (int i = 0; i < workerCount; i++)
-        {
-            Console.WriteLine($"Name: {workers[i].Name}, Salary: {workers[i].Salary:C}");
-        }
-    }
 }
