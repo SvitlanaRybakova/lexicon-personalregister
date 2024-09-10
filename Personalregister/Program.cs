@@ -2,12 +2,12 @@
 
 class Program
 {
-    static (string Name, decimal Salary)[] workers = new (string, decimal)[100]; 
+    static (string Name, decimal Salary)[] workers = new (string, decimal)[100];
     static int workerCount = 0;
 
     static void Main(string[] args)
     {
-        ShowMenu(); 
+        ShowMenu();
     }
 
     static void ShowMenu()
@@ -39,18 +39,37 @@ class Program
                     break;
             }
 
-            Console.WriteLine(); 
+            Console.WriteLine();
         }
     }
 
     static void AddWorker()
     {
-        Console.WriteLine("Not implemented yet");
+        if (workerCount >= workers.Length)
+        {
+            Console.WriteLine("Maximum number of workers reached.");
+            return;
+        }
+
+        Console.Write("Enter worker's name: ");
+        string name = Console.ReadLine();
+
+        Console.Write("Enter worker's salary: ");
+        if (decimal.TryParse(Console.ReadLine(), out decimal salary))
+        {
+            workers[workerCount] = (name, salary);
+            workerCount++;
+            Console.WriteLine("Worker added successfully!");
+        }
+        else
+        {
+            Console.WriteLine("Invalid salary input, please try again.");
+        }
     }
 
-   
+
     static void DisplayWorkers()
     {
-         Console.WriteLine("Not implemented yet");
+        Console.WriteLine("Not implemented yet");
     }
 }
