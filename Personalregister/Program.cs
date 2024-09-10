@@ -70,6 +70,16 @@ class Program
 
     static void DisplayWorkers()
     {
-        Console.WriteLine("Not implemented yet");
+        if (workerCount == 0)
+        {
+            Console.WriteLine("No workers to display.");
+            return;
+        }
+
+        Console.WriteLine("List of workers:");
+        for (int i = 0; i < workerCount; i++)
+        {
+            Console.WriteLine($"Name: {workers[i].Name}, Salary: {workers[i].Salary:C}");
+        }
     }
 }
