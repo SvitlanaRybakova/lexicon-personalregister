@@ -15,10 +15,12 @@ class Program
 
         while (isOpen)
         {
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("----- Company Worker Management Menu -----");
             Console.WriteLine("1. Add Worker");
             Console.WriteLine("2. Display Workers");
             Console.WriteLine("3. Exit");
+            utilities.DefaultConsoleColor();
             Console.Write("Select an option: ");
             string option = Console.ReadLine();
 
@@ -34,7 +36,9 @@ class Program
                     isOpen = false;
                     break;
                 default:
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Invalid option, please try again.");
+                    utilities.DefaultConsoleColor();
                     break;
             }
 
