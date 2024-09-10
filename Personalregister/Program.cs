@@ -3,9 +3,6 @@ using Personalregister;
 
 class Program
 {
-    static (string Name, decimal Salary)[] workers = new (string, decimal)[100];
-    static int workerCount = 0;
-
     static void Main(string[] args)
     {
         ShowMenu();
@@ -28,10 +25,10 @@ class Program
             switch (option)
             {
                 case "1":
-                    utilities.AddWorker(ref workerCount, workers);
+                    utilities.AddWorker();
                     break;
                 case "2":
-                    utilities.DisplayWorkers(ref workerCount, workers);
+                    utilities.DisplayWorkers();
                     break;
                 case "3":
                     isOpen = false;

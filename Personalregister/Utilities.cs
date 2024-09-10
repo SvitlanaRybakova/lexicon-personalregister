@@ -3,7 +3,9 @@ namespace Personalregister
 {
 	public class Utilities
 	{
-		public void AddWorker(ref int workerCount, (string Name, decimal Salary)[] workers)
+		 static (string Name, decimal Salary)[] workers = new (string, decimal)[100];
+    	static int workerCount = 0;
+		public void AddWorker()
 		{
 			if (workerCount >= workers.Length)
 			{
@@ -28,7 +30,7 @@ namespace Personalregister
 		}
 
 
-		public void DisplayWorkers(ref int workerCount, (string Name, decimal Salary)[] workers)
+		public void DisplayWorkers()
 		{
 			if (workerCount == 0)
 			{
@@ -39,7 +41,7 @@ namespace Personalregister
 			Console.WriteLine("List of workers:");
 			for (int i = 0; i < workerCount; i++)
 			{
-				Console.WriteLine($"Name: {workers[i].Name}, Salary: {workers[i].Salary:C}");
+				Console.WriteLine($"Name: {workers[i].Name}, Salary: {workers[i].Salary} SEK");
 			}
 		}
 	}
